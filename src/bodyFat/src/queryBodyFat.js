@@ -2,6 +2,7 @@ import { Gender } from '../../assets/enums/Gender'
 import { bodyFatFemale } from '../assets/bodyFatFemale'
 
 export const queryBodyFat = (bodyFat, gender) => {
+  `input bodyfat is ${bodyFat}` |> console.log
   switch (gender) {
     case Gender.Female:
       switch (true) {

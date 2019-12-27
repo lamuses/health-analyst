@@ -29,7 +29,7 @@ export class BodyFat {
     this.#age = age
     this.#gender = gender
     this.#bmi = bmi
-    this.#bodyFat = this.#updateBodyFat()
+    this.#bodyFat = this.updateBodyFat()
   }
 
   static build (bmi, age, gender) {
@@ -38,20 +38,20 @@ export class BodyFat {
 
   set bmi (value) {
     this.#bmi = value
-    this.#updateBodyFat()
+    this.updateBodyFat()
   }
 
   set age (value) {
     this.#age = value
-    this.#updateBodyFat()
+    this.updateBodyFat()
   }
 
   set gender (value) {
     this.#gender = value
-    this.#updateBodyFat()
+    this.updateBodyFat()
   }
 
-  #updateBodyFat () {
+  updateBodyFat () {
     this.#bodyFat = calculateBodyFat(this.#bmi, this.#age, this.#gender)
     return this.#bodyFat
   }
@@ -61,7 +61,7 @@ export class BodyFat {
   }
 
   get objective () {
-    return queryBodyFat(this.#bodyFat)
+    return queryBodyFat(this.#bodyFat, this.#gender)
   }
 
   toString () {
