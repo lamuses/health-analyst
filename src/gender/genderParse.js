@@ -1,4 +1,4 @@
-import { Gender } from '../../assets/enums/Gender'
+import { Gender } from '../assets/enums/Gender'
 
 export const genderParse = gender => {
   switch (String(gender[0]).toLowerCase()) {

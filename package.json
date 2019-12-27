@@ -15,18 +15,20 @@
     "mocha": "mocha"
   },
   "dependencies": {
-    "crostab": "^0.2.4",
-    "veho": "^0.1.54",
-    "spettro": "^0.0.17",
-    "xbrief": "^0.2.7",
-    "chalk": "latest"
+    "gaussian": "^1.1.0"
   },
   "devDependencies": {
+    "chalk": "^3.0.0",
+    "crostab": "^0.2.4",
+    "spettro": "^0.0.17",
+    "veho": "^0.1.54",
+    "xbrief": "^0.2.7",
     "@babel/core": "^7.5.5",
     "@babel/plugin-external-helpers": "^7.2.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@babel/plugin-proposal-pipeline-operator": "^7.5.0",
+    "@babel/plugin-proposal-private-methods": "^7.7.4",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.5.5",
     "@babel/register": "^7.5.5",

@@ -1,4 +1,4 @@
-import { Gender } from '../../../assets/enums/Gender'
+import { Gender } from '../../assets/enums/Gender'
 import { bodyFatFemale } from '../assets/bodyFatFemale'
 
 export const queryBodyFat = (bodyFat, gender) => {

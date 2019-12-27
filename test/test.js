@@ -1,9 +1,8 @@
-import { Gender } from '../assets/enums/Gender'
+import { Gender } from '../src/assets/enums/Gender'
 import { BMI } from '../src/bmi'
 import { BodyFat } from '../src/bodyFat'
-import { ObjectiveManager } from '../src'
+import { HealthAnalyst } from '../src'
 import { deco } from 'xbrief'
-
 describe('Health analyzer test', () => {
     it('Test sample: 174, 62, 30, Gender.Male', () => {
       const [height, weight, age, gender] = [
@@ -15,9 +14,9 @@ describe('Health analyzer test', () => {
       const calc = {}, suggest = {}
       calc.bmi = `${bmi} (${bmi.evaluate})`
       calc.bodyFat = `${bodyFat}`
-      suggest.bmi = ObjectiveManager.suggestBmi(bmi)
-      suggest.bodyFat = ObjectiveManager.suggestBodyFat(bodyFat)
-      suggest.weight = ObjectiveManager.suggestWeight(bmi)
+      suggest.bmi = HealthAnalyst.suggestBmi(bmi)
+      suggest.bodyFat = HealthAnalyst.suggestBodyFat(bodyFat)
+      suggest.weight = HealthAnalyst.suggestWeight(bmi)
       calc |> (_ => deco(_, { vu: 3 })) |> console.log
       suggest |> (_ => deco(_, { vu: 3 })) |> console.log
     })
@@ -31,9 +30,9 @@ describe('Health analyzer test', () => {
       const calc = {}, suggest = {}
       calc.bmi = `${bmi} (${bmi.evaluate})`
       calc.bodyFat = `${bodyFat}`
-      suggest.bmi = ObjectiveManager.suggestBmi(bmi)
-      suggest.bodyFat = ObjectiveManager.suggestBodyFat(bodyFat)
-      suggest.weight = ObjectiveManager.suggestWeight(bmi)
+      suggest.bmi = HealthAnalyst.suggestBmi(bmi)
+      suggest.bodyFat = HealthAnalyst.suggestBodyFat(bodyFat)
+      suggest.weight = HealthAnalyst.suggestWeight(bmi)
       calc |> (_ => deco(_, { vu: 3 })) |> console.log
       suggest |> (_ => deco(_, { vu: 3 })) |> console.log
     })
