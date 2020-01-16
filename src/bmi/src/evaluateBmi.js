@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {number} bmi
+ * @returns {string}
+ */
 export const evaluateBmi = bmi =>
   bmi < 18.5
     ? 'under-weight'

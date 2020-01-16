@@ -108,6 +108,28 @@ export class HealthAnalyst {
    * @param {symbol} [scope]
    * @returns {string|{bodyFat: string, weight: string, bmi: string}}
    */
+  evaluate (scope) {
+    switch (scope) {
+      case Scope.BMI:
+        return this.#bmi.evaluate
+      case Scope.BodyFat:
+        return 'notice: evaluation of body-fat is under development.'
+      case Scope.Weight:
+        return 'notice: evaluation of weight is under development.'
+      default:
+        return {
+          bmi: this.#bmi.evaluate,
+          bodyFat: 'notice: evaluation of body-fat is under development.',
+          weight: 'notice: evaluation of weight is under development.'
+        }
+    }
+  }
+
+  /**
+   *
+   * @param {symbol} [scope]
+   * @returns {string|{bodyFat: string, weight: string, bmi: string}}
+   */
   suggest (scope) {
     switch (scope) {
       case Scope.BMI:

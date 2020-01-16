@@ -63,6 +63,10 @@ export class BMI {
     }
   }
 
+  /**
+   *
+   * @returns {string}
+   */
   get evaluate () {
     return evaluateBmi(this.#bmi)
   }

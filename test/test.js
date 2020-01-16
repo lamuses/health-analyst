@@ -7,6 +7,7 @@ const analyse = ({ height, weight, age, gender }) => {
   const healthAnalyst = HealthAnalyst.build({ height, weight, age, gender })
   healthAnalyst.status() |> (_ => deco(_, { vu: 3 })) |> console.log
   healthAnalyst.objective() |> (_ => deco(_, { vu: 1 })) |> console.log
+  healthAnalyst.evaluate() |> (_ => deco(_, { vu: 1 })) |> console.log
   healthAnalyst.suggest() |> (_ => deco(_, { vu: 3 })) |> console.log
 }
 const samples = {
