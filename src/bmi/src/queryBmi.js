@@ -21,6 +21,12 @@ export const queryBmi = bmi => {
 
 const ageGroup = age => ~~(age / 5) * 5
 
+/**
+ *
+ * @param {number} age
+ * @param {number} gender
+ * @returns {number}
+ */
 export const queryBmiStat = (age, gender) => {
   switch (gender) {
     case Gender.Male:
@@ -31,6 +37,13 @@ export const queryBmiStat = (age, gender) => {
   }
 }
 
+/**
+ *
+ * @param {number} bmi
+ * @param {number} age
+ * @param {number} gender
+ * @returns {number}
+ */
 export const queryBmiPercentile = (bmi, age, gender) => {
   const { avg, dev } = queryBmiStat(age, gender)
   const dist = gaussian(avg, dev)

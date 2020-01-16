@@ -1,40 +1,24 @@
 import { Gender } from '../src/assets/enums/Gender'
-import { BMI } from '../src/bmi'
-import { BodyFat } from '../src/bodyFat'
 import { HealthAnalyst } from '../src'
-import { deco } from 'xbrief'
+import { deco, Xr } from 'xbrief'
+import { GP } from 'elprimero'
+
+const analyse = ({ height, weight, age, gender }) => {
+  const healthAnalyst = HealthAnalyst.build({ height, weight, age, gender })
+  healthAnalyst.status() |> (_ => deco(_, { vu: 3 })) |> console.log
+  healthAnalyst.objective() |> (_ => deco(_, { vu: 1 })) |> console.log
+  healthAnalyst.suggest() |> (_ => deco(_, { vu: 3 })) |> console.log
+}
+const samples = {
+  slim_boy: { height: 174, weight: 62, age: 30, gender: Gender.Male },
+  slim_girl: { height: 168, weight: 46, age: 30, gender: Gender.Female }
+}
 describe('Health analyzer test', () => {
-    it('Test sample: 174, 62, 30, Gender.Male', () => {
-      const [height, weight, age, gender] = [
-        174, 62, 30, Gender.Male,
-      ]
-      const bmi = BMI.build(weight, height)
-      const bodyFat = BodyFat.build(bmi.value, age, gender)
-
-      const calc = {}, suggest = {}
-      calc.bmi = `${bmi} (${bmi.evaluate})`
-      calc.bodyFat = `${bodyFat}`
-      suggest.bmi = HealthAnalyst.suggestBmi(bmi)
-      suggest.bodyFat = HealthAnalyst.suggestBodyFat(bodyFat)
-      suggest.weight = HealthAnalyst.suggestWeight(bmi)
-      calc |> (_ => deco(_, { vu: 3 })) |> console.log
-      suggest |> (_ => deco(_, { vu: 3 })) |> console.log
-    })
-    it('Test sample: 168, 46, 30, Gender.Female', () => {
-      const [height, weight, age, gender] = [
-        168, 46, 30, Gender.Female,
-      ]
-      const bmi = BMI.build(weight, height)
-      const bodyFat = BodyFat.build(bmi.value, age, gender)
-
-      const calc = {}, suggest = {}
-      calc.bmi = `${bmi} (${bmi.evaluate})`
-      calc.bodyFat = `${bodyFat}`
-      suggest.bmi = HealthAnalyst.suggestBmi(bmi)
-      suggest.bodyFat = HealthAnalyst.suggestBodyFat(bodyFat)
-      suggest.weight = HealthAnalyst.suggestWeight(bmi)
-      calc |> (_ => deco(_, { vu: 3 })) |> console.log
-      suggest |> (_ => deco(_, { vu: 3 })) |> console.log
-    })
-  },
+    for (let [name, profile] of Object.entries(samples)) {
+      it(`Analyse ${name}: ${profile |> JSON.stringify}`, () => {
+        Xr(GP.now()).tag(name, profile |> deco).say |> console.log
+        profile |> analyse
+      })
+    }
+  }
 )
